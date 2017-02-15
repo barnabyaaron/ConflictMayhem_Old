@@ -34,8 +34,9 @@
                     // Do something on click  
                     playBtn.sprite(0, 1);
                     playBtn.y += 5;
-                    console.log("Start Clicked!");
-                });
+
+                        options.changeScene('intro');
+                    });
 
                 continueBtn.attr({
                     x: options.config.viewport.width / 2 - 184,
@@ -59,7 +60,6 @@
                     // Do something on click  
                     continueBtn.sprite(0, 1);
                     continueBtn.y += 5;
-                    console.log("Continue Clicked!");
                     classicBtn.alpha = 100;
                 });
 
@@ -86,7 +86,6 @@
                     // Do something on click  
                     classicBtn.sprite(0, 1);
                     classicBtn.y += 5;
-                    console.log("Classic Clicked!");
                 });
             },
             uninit: function () { }

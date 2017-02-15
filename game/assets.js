@@ -1,21 +1,5 @@
 ﻿define(function () {
-
-    var imageFileAssetHashNameMap = {
-        alien1: "images/alien1-87aa3275.png",
-        alien2: "images/alien2-51b00616.png",
-        alien3: "images/alien3-7023c5b6.png",
-        alien_explosion: "images/alien_explosion-9b3848d5.png",
-        alien_shot: "images/alien_shot-f8e9dd99.png",
-        player_base: "images/player_base-66bea591.png",
-        player_cannon: "images/player_cannon-68d25d48.png",
-        player_explosion: "images/player_explosion-aa4dac04.png",
-        player_life: "images/player_life-3cf170ba.png",
-        shell: "images/shell-c144c700.png",
-        shield: "images/shield-bd571849.png",
-        spaceship: "images/spaceship-3e42decd.png",
-        spaceship_explosion: "images/spaceship_explosion-59f3c340.png"
-    };
-
+    
     return [
         {
             scenes: ["menu"],
@@ -35,38 +19,24 @@
         {
             scenes: ["intro"],
             data: {
-                images: [
-                    "sprites/alien1.png",
-                    "sprites/alien2.png",
-                    "sprites/alien3.png",
-                    "sprites/alien_explosion.png",
-                    "sprites/alien_shot.png",
-                    "sprites/player_base.png",
-                    "sprites/player_cannon.png",
-                    "sprites/player_explosion.png",
-                    "sprites/player_life.png",
-                    "sprites/shell.png",
-                    "sprites/shield.png",
-                    "sprites/spaceship.png",
-                    "sprites/spaceship_explosion.png"
-                ],
+                images: [],
                 audio: {
-                    alien_die: [
+                    classic_alien_die: [
                         "alien_die.wav",
                         "alien_die.mp3",
                         "alien_die.ogg"
                     ],
-                    alien_move0: [
+                    classic_alien_move0: [
                         "alien_move0.wav",
                         "alien_move0.mp3",
                         "alien_move0.ogg"
                     ],
-                    alien_move1: [
+                    classic_alien_move1: [
                         "alien_move1.wav",
                         "alien_move1.mp3",
                         "alien_move1.ogg"
                     ],
-                    alien_shot_hit: [
+                    classic_alien_shot_hit: [
                         "alien_shot_hit.wav",
                         "alien_shot_hit.mp3",
                         "alien_shot_hit.ogg"
@@ -92,7 +62,97 @@
                         "ship_hit.ogg"
                     ]
                 },
-                sprites: {}
+                sprites: {
+                    "sprites/alien1.png": {
+                        tile: 48,
+                        tileh: 48,
+                        map: {
+                            classic_alien1: [0, 0]
+                        }
+                    },
+                    "sprites/alien2.png": {
+                        tile: 48,
+                        tileh: 48,
+                        map: {
+                            classic_alien2: [0, 0]
+                        }
+                    },
+                    "sprites/alien3.png": {
+                        tile: 48,
+                        tileh: 48,
+                        map: {
+                            classic_alien3: [0, 0]
+                        }
+                    },
+                    "sprites/alien_explosion.png": {
+                        tile: 48,
+                        tileh: 48,
+                        map: {
+                            classic_alienExplosion: [0, 0]
+                        }
+                    },
+                    "sprites/alien_shot.png": {
+                        tile: 5,
+                        tileh: 16,
+                        map: {
+                            classic_alienShot: [0, 0]
+                        }
+                    },
+                    "sprites/player_life.png": {
+                        tile: 25,
+                        tileh: 23,
+                        map: {
+                            playerLife: [0, 0]
+                        }
+                    },
+                    "sprites/shield.png": {
+                        tile: 12,
+                        tileh: 12,
+                        map: {
+                            shieldSprite: [0, 0]
+                        }
+                    },
+                    "sprites/spaceship.png": {
+                        tile: 80,
+                        tileh: 30,
+                        map: {
+                            classic_spaceshipSprite: [0, 0]
+                        }
+                    },
+                    "sprites/spaceship_explosion.png": {
+                        tile: 80,
+                        tileh: 30,
+                        map: {
+                            classic_spaceshipExplosion: [0, 0]
+                        }
+                    },
+                    "sprites/player_explosion.png": {
+                        tile: 64,
+                        tileh: 64,
+                        map: {
+                            playerExplosion: [0, 0]
+                        }
+                    },
+                    "sprites/shell.png": {
+                        tile: 7,
+                        tileh: 10,
+                        map: {
+                            shellSprite: [0, 0]
+                        }
+                    },
+                    "sprites/player_cannon.png": {
+                        tile: 62,
+                        map: {
+                            cannonSprite: [0, 0]
+                        }
+                    },
+                    "sprites/player_base.png": {
+                        tile: 62,
+                        map: {
+                            bodySprite: [0, 0]
+                        }
+                    }
+                }
             }
         }
     ];
