@@ -10,6 +10,7 @@ requirejs.config({
         backbone: '../libs/backbone/backbone-min',
         crafty: '../libs/crafty/crafty',
         store: '../libs/store/store-min',
+        dll: '../libs/DLL/doublylinkedlist',
         game: '../game',
         libs: '../libs'
     },
@@ -19,7 +20,8 @@ requirejs.config({
         backbone: {
             deps: ['underscore'],
             exports: "Backbone"
-        }
+        },
+        dll: { exports: "DLL" }
     }
 });
 

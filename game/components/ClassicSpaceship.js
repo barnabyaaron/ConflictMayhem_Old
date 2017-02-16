@@ -1,30 +1,16 @@
 ﻿define([
     'underscore',
-    'crafty'
-], function (_, Crafty) {
-
-    var ClassicShipConstants = (function() {
-        function ClassicShipConstants() { }
-
-        ClassicShipConstants.SPEED = 4;
-        ClassicShipConstants.HEIGHT = 30;
-        ClassicShipConstants.WIDTH = 80;
-        ClassicShipConstants.FLIGHT_Y = 50;
-        ClassicShipConstants.SPAWN_CHANCE_INTERVAL = 5000;
-        ClassicShipConstants.SPAWN_CHANCE = 20;
-        ClassicShipConstants.IDLE_X = -200;
-        ClassicShipConstants.IDLE_Y = 0;
-        ClassicShipConstants.MOVEMENT_ANIMATION_DURATION = 250;
-
-        return ClassicShipConstants;
-    })();
+    'crafty',
+    'storage',
+    'game/constants/ClassicShip'
+], function (_, Crafty, storage, ClassicShipConstants) {
 
     Crafty.c("ClassicSpaceship",
     {
         init: function() {
             this.requires("2D, DOM, SpriteAnimation, Collision, classic_spaceshipSprite");
             this.flying = false;
-            this.explosion = Crafty.e('Explosion').explosion('classic_spaceshipExplosion', 3, 1000, 2);
+            this.explosion = Crafty.e('ClassicExplosion').explosion('classic_spaceshipExplosion', 3, 1000, 2);
             this.attr({
                 x: ClassicShipConstants.IDLE_X,
                 y: ClassicShipConstants.IDLE_Y,
@@ -62,7 +48,9 @@
             });
             this.pauseAnimation();
             this.unbind("EnterFrame", this.advance);
+            
             Crafty.audio.stop("ship_fly");
+
             this.flying = false;
             return this;
         },
@@ -87,6 +75,7 @@
                     });
             }
             this.bind("EnterFrame", this.advance);
+
             Crafty.audio.play("ship_fly", -1);
             return this;
         },

@@ -1,12 +1,9 @@
-﻿define([
-    'underscore',
-    'crafty'
-], function (_, Crafty) {
+﻿define(function () {
 
     return {
         WIDTH:  64,
         HEIGHT: 64,
-        SPEED: 3,
+        SPEED: 200,
         MOVEMENT_ANIMATION_DURATION: 250,
         FIRE_ANIMATION_DURATION: 300,
         RELOAD_ANIMATION_DURATION: 500,

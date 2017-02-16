@@ -1,23 +1,9 @@
 ﻿define([
     'underscore',
-    'crafty'
-], function (_, Crafty) {
-
-    var ClassicAlienShotConstants = (function() {
-        function ClassicAlienShotConstants() { }
-
-        ClassicAlienShotConstants.SPEED = 3;
-        ClassicAlienShotConstants.WIDTH = 5;
-        ClassicAlienShotConstants.HEIGHT = 16;
-        ClassicAlienShotConstants.MAX_SHOTS = 8;
-        ClassicAlienShotConstants.BASE_SHOT_CHANCE = 2;
-        ClassicAlienShotConstants.ZAP_INTERVAL = 200;
-        ClassicAlienShotConstants.SHOT_IDLE_X = -100;
-        ClassicAlienShotConstants.SHOT_IDLE_Y = 100;
-
-        return AlienShotConstants;
-    })();
-
+    'crafty',
+    'game/constants/ClassicAlienShot'
+], function (_, Crafty, ClassicAlienShotConstants) {
+    
     Crafty.c("ClassicAlienShot",
     {
         init: function() {
@@ -71,7 +57,7 @@
             return this;
         },
         die: function() {
-            Crafty.audio.play("classic_alien_shot_hit");
+            Crafty.audio.play("alien_shot_hit");
             return this.stop();
         },
         stop: function() {

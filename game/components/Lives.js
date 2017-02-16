@@ -1,20 +1,8 @@
 ﻿define([
     'underscore',
-    'crafty'
-], function (_, Crafty) {
-
-    var PlayerLifeConstants = (function() {
-        function PlayerLifeConstants() { }
-
-        PlayerLifeConstants.WIDTH = 25;
-        PlayerLifeConstants.HEIGHT = 23;
-        PlayerLifeConstants.MARGIN_Y = 20;
-        PlayerLifeConstants.MARGIN_X = 20;
-        PlayerLifeConstants.MAX_LIVES = 10;
-        PlayerLifeConstants.INITIAL_LIVES = 3;
-
-        return PlayerLifeConstants;
-    })();
+    'crafty',
+    'game/constants/PlayerLife'
+], function (_, Crafty, PlayerLifeConstants) {
 
     Crafty.c('Lives',
     {

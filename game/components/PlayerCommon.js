@@ -12,7 +12,9 @@
             this.multiway(PlayerConstants.SPEED,
             {
                 LEFT_ARROW: 180,
-                RIGHT_ARROW: 0
+                RIGHT_ARROW: 0,
+                D: 0,
+                A: 180
             });
             this.bind("NewDirection",
                 function (info) {

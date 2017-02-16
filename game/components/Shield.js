@@ -1,17 +1,8 @@
 ﻿define([
     'underscore',
-    'crafty'
-], function (_, Crafty) {
-
-    var ShieldConstants = (function() {
-        function ShieldConstants() { }
-
-        ShieldConstants.WIDTH = ShieldConstants.HEIGHT = 12;
-        ShieldConstants.IDLE_X = -50;
-        ShieldConstants.IDLE_Y = 90;
-
-        return ShieldConstants;
-    })();
+    'crafty',
+    'game/constants/Shield'
+], function (_, Crafty, ShieldConstants) {
 
     Crafty.c("Shield",
     {

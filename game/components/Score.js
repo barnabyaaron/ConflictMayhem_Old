@@ -1,17 +1,8 @@
 ﻿define([
     'underscore',
-    'crafty'
-], function (_, Crafty) {
-
-    var ScoreConstants = (function() {
-        function ScoreConstants() { }
-
-        ScoreConstants.MARGIN_Y = 20;
-        ScoreConstants.MARGIN_X = 20;
-        ScoreConstants.LIFE_GAIN_SCORE = 2500;
-
-        return ScoreConstants;
-    })();
+    'crafty',
+    'game/constants/Score'
+], function (_, Crafty, ScoreConstants) {
 
     Crafty.c('Score',
     {

@@ -1,16 +1,8 @@
 ﻿define([
     'underscore',
-    'crafty'
-], function (_, Crafty) {
-
-    var ClassicExplosionConstants = (function() {
-        function ClassicExplosionConstants() { }
-
-        ClassicExplosionConstants.IDLE_X = -200;
-        ClassicExplosionConstants.IDLE_Y = -300;
-
-        return ClassicExplosionConstants;
-    })();
+    'crafty',
+    'game/constants/ClassicExplosion'
+], function (_, Crafty, ClassicExplosionConstants) {
 
     Crafty.c("ClassicExplosion",
     {

@@ -1,8 +1,8 @@
 ﻿define([
     'underscore',
     'crafty',
-    'game/constants/Player'
-], function (_, Crafty, PlayerConstants) {
+    'storage'
+], function (_, Crafty, storage) {
 
     Crafty.c('Player',
     {
@@ -11,7 +11,7 @@
             this.body = Crafty.e('PlayerBody');
             this.cannon = Crafty.e('PlayerCannon');
             this.shot = Crafty.e('PlayerShot');
-            this.explosion = Crafty.e('Explosion').explosion('playerExplosion', 3, 1000, 2);
+            this.explosion = Crafty.e('ClassicExplosion').explosion('playerExplosion', 3, 1000, 2);
             this.isShooting = false;
             this.shootingDisabled = false;
             this.enableControl();
@@ -88,6 +88,7 @@
             if (!this.shot.isActive()) {
                 this.cannon.fire();
                 this.shot.fireFrom(this.x() + 29, this.y() + 16);
+
                 Crafty.audio.play('player_shoot');
             }
             return this;
@@ -98,7 +99,9 @@
                 this.disableControl();
                 this.stopShooting();
                 this.hide();
+
                 Crafty.audio.play('player_die');
+                
                 return true;
             }
             return false;

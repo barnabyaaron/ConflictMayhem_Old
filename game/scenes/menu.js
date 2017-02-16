@@ -1,16 +1,18 @@
 ﻿define([
         'underscore',
         'crafty',
-        'game/config',
         'storage'
 ],
-    function (_, Crafty, gameConfig, storage) {
+    function (_, Crafty, storage) {
         return {
             name: "menu",
             init: function (options) {
-                var playBtn = Crafty.e("2D, DOM, Text, Tween, Mouse, button_dark");
-                var continueBtn = Crafty.e("2D, DOM, Text, Tween, Mouse, button_dark");
-                var classicBtn = Crafty.e("2D, DOM, Text, Tween, Mouse, button_dark");
+                Crafty.background('#000 url(assets/images/earth_bg.jpg) no-repeat center center');
+                Crafty.audio.play('music', -1);
+
+                var playBtn = Crafty.e("2D, DOM, Tween, Mouse, start_button");
+                var continueBtn = Crafty.e("2D, DOM, Tween, Mouse, continue_button");
+                var classicBtn = Crafty.e("2D, DOM, Tween, Mouse, classic_button");
 
                 playBtn.attr({
                     x: options.config.viewport.width / 2 - 184,
@@ -18,75 +20,70 @@
                     w: 368,
                     h: 70
                 })
-                .textColor("white")
-                .text("Start Mayhem")
-                .textFont({
-                    "family": "Silkscreen Expanded",
-                    "size": "35px",
-                    "lineHeight": (playBtn.h - 7) + "px"
+                .bind("MouseOver", function () {
+                    playBtn.sprite("start_button_hover");
                 })
-                .css({
-                    "text-align": "center",
-                    "vertical-align": "middle",
-                    "line-height": (playBtn.h - 7) + "px"
+                .bind("MouseOut", function () {
+                    playBtn.sprite("start_button");
+                })
+                .bind("MouseDown", function () {
+                    playBtn.sprite("start_button_click");
                 })
                 .bind("Click", function() {
-                    // Do something on click  
-                    playBtn.sprite(0, 1);
-                    playBtn.y += 5;
-
-                        options.changeScene('intro');
-                    });
+                    Crafty.audio.stop();
+                    options.changeScene('intro');
+                });
 
                 continueBtn.attr({
                     x: options.config.viewport.width / 2 - 184,
-                    y: options.config.viewport.height / 5 * 3,
+                    y: options.config.viewport.height / 5 * 2.7,
                     w: 368,
-                    h: 50
+                    h: 50,
+                    visible: false
                 })
-                .textColor("white")
-                .text("Continue Mayhem")
-                .textFont({
-                    "family": "Silkscreen Expanded",
-                    "size": "26px",
-                    "lineHeight": (continueBtn.h - 5) + "px"
+                .bind("MouseOver", function () {
+                    continueBtn.sprite("continue_button_hover");
                 })
-                .css({
-                    "text-align": "center",
-                    "vertical-align": "middle",
-                    "line-height": (continueBtn.h - 5) + "px"
+                .bind("MouseOut", function () {
+                    continueBtn.sprite("continue_button");
+                })
+                .bind("MouseDown", function() {
+                    continueBtn.sprite('continue_button_click');
                 })
                 .bind("Click", function () {
-                    // Do something on click  
-                    continueBtn.sprite(0, 1);
-                    continueBtn.y += 5;
-                    classicBtn.alpha = 100;
+                    Crafty.audio.stop();
+
+                    // @TODO go to saved level
                 });
+
+                if (storage.get('level') > 1) {
+                    continueBtn.visible = true;
+                }
 
                 classicBtn.attr({
                     x: options.config.viewport.width / 2 - 184,
                     y: options.config.viewport.height / 5 * 4,
                     w: 368,
                     h: 50,
-                    alpha: 0
+                    visible: false
                 })
-                .textColor("white")
-                .text("Classic Mode")
-                .textFont({
-                    "family": "Silkscreen Expanded",
-                    "size": "26px",
-                    "lineHeight": (classicBtn.h - 5) + "px"
+                .bind("MouseOver", function () {
+                    classicBtn.sprite("classic_button_hover");
                 })
-                .css({
-                    "text-align": "center",
-                    "vertical-align": "middle",
-                    "line-height": (classicBtn.h - 5) + "px"
+                .bind("MouseOut", function () {
+                    classicBtn.sprite("classic_button");
+                })
+                .bind("MouseDown", function () {
+                    classicBtn.sprite('classic_button_click');
                 })
                 .bind("Click", function () {
-                    // Do something on click  
-                    classicBtn.sprite(0, 1);
-                    classicBtn.y += 5;
+                    Crafty.audio.stop();
+                    options.changeScene('classic');
                 });
+
+                if (storage.get('classic_mode_unlocked') === true) {
+                    classicBtn.visible = true;
+                }
             },
             uninit: function () { }
         };

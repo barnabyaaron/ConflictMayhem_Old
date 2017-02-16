@@ -4,7 +4,16 @@
         {
             scenes: ["menu"],
             data: {
-                images: [],
+                images: [
+                    "earth_bg.jpg"
+                ],
+                audio: {
+                    music: [
+                        "classic/spaceinvaders1.wav",
+                        "classic/spaceinvaders1.mp3",
+                        "classic/spaceinvaders1.ogg"
+                    ]
+                },
                 sprites: {
                     "ui/Button_Dark_Thin.png": {
                         tile: 368,
@@ -12,31 +21,58 @@
                         map: {
                             button_dark: [0, 0], button_dark_down: [0, 1]
                         }
+                    },
+                    "ui/start_menu_buttons.png": {
+                        tile: 340,
+                        tileh: 60,
+                        map: {
+                            start_button: [0, 0],
+                            start_button_hover: [0, 1],
+                            start_button_click: [0, 2]
+                        }
+                    },
+                    "ui/continue_menu_buttons.png": {
+                        tile: 340,
+                        tileh: 60,
+                        map: {
+                            continue_button: [0, 0],
+                            continue_button_hover: [0, 1],
+                            continue_button_click: [0, 2]
+                        }
+                    },
+                    "ui/classic_menu_buttons.png": {
+                        tile: 340,
+                        tileh: 60,
+                        map: {
+                            classic_button: [0, 0],
+                            classic_button_hover: [0, 1],
+                            classic_button_click: [0, 2]
+                        }
                     }
                 }
             }
         },
         {
-            scenes: ["intro"],
+            scenes: ["intro", "classic"],
             data: {
                 images: [],
                 audio: {
-                    classic_alien_die: [
+                    alien_die: [
                         "alien_die.wav",
                         "alien_die.mp3",
                         "alien_die.ogg"
                     ],
-                    classic_alien_move0: [
+                    alien_move0: [
                         "alien_move0.wav",
                         "alien_move0.mp3",
                         "alien_move0.ogg"
                     ],
-                    classic_alien_move1: [
+                    alien_move1: [
                         "alien_move1.wav",
                         "alien_move1.mp3",
                         "alien_move1.ogg"
                     ],
-                    classic_alien_shot_hit: [
+                    alien_shot_hit: [
                         "alien_shot_hit.wav",
                         "alien_shot_hit.mp3",
                         "alien_shot_hit.ogg"
@@ -141,17 +177,36 @@
                         }
                     },
                     "sprites/player_cannon.png": {
-                        tile: 62,
+                        tile: 64,
+                        tileh: 64,
                         map: {
                             cannonSprite: [0, 0]
                         }
                     },
                     "sprites/player_base.png": {
                         tile: 62,
+                        tileh: 64,
                         map: {
                             bodySprite: [0, 0]
                         }
                     }
+                }
+            }
+        },
+        {
+            scenes: ["classic"],
+            data: {
+                audio: {
+                    classic_alien_die: "classic/invaderkilled.wav",
+                    classic_alien_move0: [
+                        "classic/fastinvader1.wav",
+                        "classic/fastinvader1.mp3",
+                        "classic/fastinvader1.ogg"
+                    ],
+                    classic_alien_move1: "classic/fastinvader2.wav",
+                    classic_ship_fly: "classic/ufo_highpitch.wav",
+                    classic_player_shoot: "classic/shoot.wav",
+                    classic_player_die: "classic/explosion.wav"
                 }
             }
         }

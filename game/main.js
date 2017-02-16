@@ -2,17 +2,12 @@
         'underscore',
         'crafty',
         'collections/scenes',
-        'game/config',
-        'game/events'
+        'game/config'
     ],
-    function(_, Crafty, Scenes, gameConfig, gameEvents) {
+    function(_, Crafty, Scenes, gameConfig) {
         return {
             init: function () {
                 this.config = gameConfig;
-                this.events = gameEvents;
-
-                // Setup Events
-                this.events.init();
 
                 // Start Game
                 Scenes.findByName("loading").load(this);

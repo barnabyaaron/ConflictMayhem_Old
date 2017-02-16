@@ -1,32 +1,10 @@
 ﻿define([
     'underscore',
-    'crafty'
-], function (_, Crafty) {
-
-    var ClassicAlienConstants = (function() {
-        function ClassicAlienConstants() { }
-
-        ClassicAlienConstants.IDLE_X = -200;
-        ClassicAlienConstants.IDLE_Y = 400;
-        ClassicAlienConstants.WIDTH = ClassicAlienConstants.HEIGHT = 48;
-        ClassicAlienConstants.HORIZONTAL_SPEED = 10;
-        ClassicAlienConstants.VERTICAL_SPEED = 25;
-        ClassicAlienConstants.MOVEMENT_INTERVAL = 2000;
-        ClassicAlienConstants.HITBOX = {
-            1: (function() {
-                return [[8, 8], [39, 8], [39, 37], [8, 37]];
-            }),
-            2: (function() {
-                return [[8, 8], [39, 8], [39, 37], [8, 37]];
-            }),
-            3: (function() {
-                return [[8, 8], [39, 8], [39, 37], [8, 37]];
-            })
-        };
-
-        return ClassicAlienConstants;
-    })();
-
+    'crafty',
+    'storage',
+    'game/constants/ClassicAlien'
+], function (_, Crafty, storage, ClassicAlienConstants) {
+    
     Crafty.c("ClassicAlien",
     {
         init: function() {
@@ -43,8 +21,9 @@
             this.direction = 'w';
             return this;
         },
-        die: function() {
-            Crafty.audio.play('classic_alien_die');
+        die: function () {
+            Crafty.audio.play('alien_die');
+            
             return this.dieSilently();
         },
         dieSilently: function() {
