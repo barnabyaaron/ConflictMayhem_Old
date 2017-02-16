@@ -21,11 +21,10 @@
                     return this.direction = info;
                 });
             return this.bind("Moved",
-                function (info) {
-                    if (this.movingOutsidePlayfield(info.x, this.direction)) {
+                function (from) {
+                    if (this.movingOutsidePlayfield(from.oldValue, this.direction)) {
                         return this.attr({
-                            x: info.x,
-                            y: info.y
+                            x: from.oldValue
                         });
                     }
                 });

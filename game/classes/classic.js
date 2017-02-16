@@ -289,10 +289,11 @@
 
             Classic.prototype.handleAlienShots = function() {
                 var alienNode, results, shotNode;
+
                 alienNode = this.aliens.head();
                 results = [];
                 while (alienNode && this.alienShots.size() > 0) {
-                    if (Random.getInRange(0, 100) < ClassicAlienConstants.BASE_SHOT_CHANCE) {
+                    if (Random.getInRange(0, 100) < ClassicAlienShotConstants.BASE_SHOT_CHANCE) {
                         shotNode = this.alienShots.head();
                         if (!shotNode) {
                             continue;
