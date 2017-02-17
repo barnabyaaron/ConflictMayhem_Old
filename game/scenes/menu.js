@@ -53,9 +53,9 @@
                     classicBtnText[Crafty.math.randomInt(0, (classicBtnText.length - 1))]
                 ).textFont({ size: '24px', family: "Silkscreen Expanded" }).attr({ visible: false });
 
-                if (storage.get('classic_mode_unlocked') === true) {
+                //if (storage.get('classic_mode_unlocked') === true) {
                     classicBtn.visible = true;
-                }
+                //}
             },
             uninit: function () { }
         };
