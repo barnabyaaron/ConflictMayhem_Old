@@ -22,7 +22,7 @@
             return this;
         },
         die: function () {
-            Crafty.audio.play('alien_die');
+            Crafty.audio.play('classic_alien_die');
             
             return this.dieSilently();
         },

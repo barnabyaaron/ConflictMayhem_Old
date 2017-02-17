@@ -37,7 +37,7 @@
         },
         destroy: function(pointsGained) {
             this.explosion.explosionText("" + pointsGained, '#FFFFFF', 10).explodeAt(this.x, this.y);
-            Crafty.audio.play("ship_hit");
+            Crafty.audio.play("classic_ship_hit");
             return this.hide();
         },
         hide: function() {
@@ -49,7 +49,7 @@
             this.pauseAnimation();
             this.unbind("EnterFrame", this.advance);
             
-            Crafty.audio.stop("ship_fly");
+            Crafty.audio.stop("classic_ship_fly");
 
             this.flying = false;
             return this;
@@ -76,7 +76,7 @@
             }
             this.bind("EnterFrame", this.advance);
 
-            Crafty.audio.play("ship_fly", -1);
+            Crafty.audio.play("classic_ship_fly", -1);
             return this;
         },
         advance: function() {

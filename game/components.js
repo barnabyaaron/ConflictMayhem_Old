@@ -1,6 +1,5 @@
 ﻿define([
     'game/components/ui',
-    'game/components/ProgressBar',
     'game/components/Banner',
     'game/components/ClassicAlien',
     'game/components/ClassicAlienShot',
@@ -8,12 +7,12 @@
     'game/components/ClassicSpaceship',
     'game/components/Lives',
     'game/components/Score',
-    'game/components/Shield',
-    'game/components/PlayerCommon',
-    'game/components/PlayerBody',
-    'game/components/PlayerCannon',
-    'game/components/PlayerShot',
-    'game/components/Player'
+    'game/components/ClassicShield',
+    'game/components/ClassicPlayerCommon',
+    'game/components/ClassicPlayerBody',
+    'game/components/ClassicPlayerCannon',
+    'game/components/ClassicPlayerShot',
+    'game/components/ClassicPlayer'
 ], function () {
     return true;
 });

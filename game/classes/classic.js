@@ -8,10 +8,10 @@
         'game/constants/ClassicAlienShot',
         'game/constants/ClassicExplosion',
         'game/constants/ClassicShip',
-        'game/constants/Player',
+        'game/constants/ClassicPlayer',
         'game/constants/PlayerLife',
         'game/constants/Score',
-        'game/constants/Shield'
+        'game/constants/ClassicShield'
     ],
     function (_, Crafty, DLL, storage, Scenes, ClassicAlienConstants, ClassicAlienShotConstants, ClassicExplosionConstants, ClassicShipConstants, PlayerConstants, PlayerLifeConstants, ScoreConstants, ShieldConstants) {
 
@@ -43,7 +43,7 @@
 
             Classic.prototype.initialize = function() {
                 this.inputSink = Crafty.e("Keyboard");
-                this.player = Crafty.e("Player");
+                this.player = Crafty.e("ClassicPlayer");
                 this.banner = Crafty.e("Banner");
                 this.score = Crafty.e("Score");
                 this.lives = Crafty.e("Lives");
@@ -202,7 +202,7 @@
                 results = [];
                 for (i = 0, len = coordinates.length; i < len; i++) {
                     coordinate = coordinates[i];
-                    shieldBlock = Crafty.e("Shield");
+                    shieldBlock = Crafty.e("ClassicShield");
                     results.push(this.shieldPool.push(shieldBlock.shield.apply(shieldBlock, coordinate)));
                 }
                 return results;
@@ -281,7 +281,7 @@
                     }
                     this.alienMoveSoundIndex = (this.alienMoveSoundIndex + 1) % 2;
 
-                    this.alienMoveSoundId = Crafty.audio.play("alien_move" + this.alienMoveSoundIndex);
+                    this.alienMoveSoundId = Crafty.audio.play("classic_alien_move" + this.alienMoveSoundIndex);
                     
                     return true;
                 }
@@ -367,15 +367,17 @@
                 this.player.hide();
                 this.player.disableControl();
                 this.banner.show("Game Over",
-                    "Final score - " + (this.score.getScore()) + "<br>Press any key to try again",
+                    "Final score - " + (this.score.getScore()) + "<br>Press enter to try again",
                     500,
                     200,
                     600,
                     400);
                 return this.inputSink.one("KeyUp",
                 (function(_this) {
-                    return function() {
-                        return _this.resetBoard();
+                    return function (e) {
+                        if (e.key === Crafty.keys.ENTER) {
+                            return _this.resetBoard();
+                        }
                     };
                 })(this));
             };
@@ -383,7 +385,7 @@
             Classic.prototype.victory = function () {
                 if (storage.get('classic_mode') === true) {
                     this.banner.show("Victory",
-                    "Well done, but more aliens are inbound!<br>Press space to persevere",
+                    "Well done, but more aliens are inbound!<br>Press enter to persevere",
                     500,
                     200,
                     600,
@@ -393,7 +395,7 @@
                     return this.inputSink.bind("KeyUp",
                     (function (_this) {
                         return function (e) {
-                            if (e.key === Crafty.keys.SPACE) {
+                            if (e.key === Crafty.keys.ENTER) {
                                 return _this.nextRound();
                             }
                         };
@@ -402,8 +404,8 @@
                     storage.set("level", 2);
                     storage.set("classic_mode_unlocked", true);
 
-                    // Return to menu for now  @TODO go to level 2
-                    Scenes.findByName("menu").load(this);
+                    // @TODO Display Level Complete Panel
+                    Scenes.findByName("menu").load(this); // Temp return to menu
                 }
             };
 

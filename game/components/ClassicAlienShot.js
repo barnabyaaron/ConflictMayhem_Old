@@ -12,17 +12,17 @@
                 visible: false
             });
             this.reel("Zap", ClassicAlienShotConstants.ZAP_INTERVAL, 0, 0, 2);
-            this.checkHits('PlayerBody, Shield');
+            this.checkHits('ClassicPlayerBody, ClassicShield');
             this.shotHit = (function(_this) {
                 return function(hitInfo) {
                     var target;
                     target = hitInfo[0].obj;
 
-                    if (target.has('Shield')) {
+                    if (target.has('ClassicShield')) {
                         _this.trigger('ShieldHit', target);
                     }
 
-                    if (target.has('PlayerBody')) {
+                    if (target.has('ClassicPlayerBody')) {
                         _this.trigger('PlayerHit', target);
                     }
 
@@ -57,7 +57,7 @@
             return this;
         },
         die: function() {
-            Crafty.audio.play("alien_shot_hit");
+            Crafty.audio.play("classic_alien_shot_hit");
             return this.stop();
         },
         stop: function() {
