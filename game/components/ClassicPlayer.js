@@ -111,9 +111,11 @@
             return !this.body._visible;
         },
         respawn: function() {
-            this.enableControl();
-            this.show();
             return this.trigger("Respawning", this);
+        },
+        remove: function() {
+            this.body.destroy();
+            this.cannon.destroy();
         },
         keyDown: function() {
             if (this.isDown(Crafty.keys.SPACE) && this.shootingDisabled === false) {
@@ -138,18 +140,13 @@
                 return this.unbind("ShotStopped", this.shoot);
             }
         },
-        enableControl: function() {
-            this.body.enableControl();
-            this.cannon.enableControl();
+        enableControl: function () {
             this.enableShooting();
-            //this.speed(ClassicPlayerConstants.SPEED);
             this.bind("KeyDown", this.keyDown);
             return this.bind("KeyUp", this.keyUp);
         },
-        disableControl: function() {
-            this.body.disableControl();
-            this.cannon.disableControl();
-            //this.speed(0); // Set speed to 0 to prevent any multiway movement while control disabled.
+        disableControl: function () {
+            this.disableShooting();
             this.unbind("KeyDown", this.keyDown);
             return this.unbind("KeyUp", this.keyUp);
         },

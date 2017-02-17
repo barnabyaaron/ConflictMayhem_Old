@@ -130,6 +130,8 @@
                     h: 493
                 });
 
+                this.elements = [];
+
                 // Create Header Text
                 this.headerText = Crafty.e("2D, DOM, Text")
                     .unselectable()
@@ -146,6 +148,7 @@
                         y: this.y - 8,
                         w: 500
                     });
+                this.elements.push(this.headerText);
 
                 // Add High Scores
                 this.highScoreText = Crafty.e("2D, DOM, Text")
@@ -161,6 +164,7 @@
                         y: this.y + 80,
                         w: 400
                     });
+                this.elements.push(this.highScoreText);
 
                 this.loadingText = Crafty.e("2D, DOM, Text")
                     .unselectable()
@@ -175,6 +179,7 @@
                         y: this.y + 130,
                         w: 400
                     });
+                this.elements.push(this.loadingText);
 
                 // Load Scores
                 var self = this;
@@ -193,6 +198,7 @@
                         y: self.y + 130,
                         w: 400
                     });
+                    self.elements.push(self.firstText);
 
                     var firstPlayer = data.first;
                     self.firstPlayer = Crafty.e("2D, DOM, Text")
@@ -208,6 +214,7 @@
                             y: self.y + 160,
                             w: 400
                         });
+                    self.elements.push(self.firstPlayer);
 
                     self.firstMedel = Crafty.e("2D, DOM, medal")
                         .attr({
@@ -216,6 +223,7 @@
                             w: 50,
                             h: 66
                         });
+                    self.elements.push(self.firstMedel);
 
                     self.secondText = Crafty.e("2D, DOM, Text")
                         .unselectable()
@@ -230,6 +238,7 @@
                             y: self.y + 200,
                             w: 400
                         });
+                    self.elements.push(self.secondText);
 
                     var secondPlayer = data.second;
                     self.secondPlayer = Crafty.e("2D, DOM, Text")
@@ -245,6 +254,7 @@
                             y: self.y + 230,
                             w: 400
                         });
+                    self.elements.push(self.secondPlayer);
 
                     self.thirdText = Crafty.e("2D, DOM, Text")
                         .unselectable()
@@ -259,6 +269,7 @@
                             y: self.y + 270,
                             w: 400
                         });
+                    self.elements.push(self.thirdText);
 
                     var thirdPlayer = data.third;
                     self.thirdPlayer = Crafty.e("2D, DOM, Text")
@@ -274,6 +285,7 @@
                             y: self.y + 300,
                             w: 400
                         });
+                    self.elements.push(self.thirdPlayer);
                 });
 
                 // Add Buttons
@@ -287,10 +299,9 @@
                         Main.changeScene('classic');
                     },
                     'Play');
+                this.elements.push(this.playBtn);
 
-                var me = this;
-
-                this.closeBtn = Crafty.e("RoundButton").setParent(me).create(
+                this.closeBtn = Crafty.e("RoundButton").setParent(this).create(
                     "close",
                     (this.x + this.w) - 100,
                     (this.y + this.h) - 90,
@@ -299,20 +310,15 @@
                         this.parent.destroy();
                     }
                 );
+                this.elements.push(this.closeBtn);
 
                 return this;
             },
             remove: function () {
-                // Remove all sub components
-                this.headerText.destroy();
-                this.highScoreText.destroy();
-                this.loadingText.destroy();
-                this.firstText.destroy();
-                this.firstMedel.destroy();
-                this.secondText.destroy();
-                this.thirdText.destroy();
-                this.playBtn.destroy();
-                this.closeBtn.destroy();
+                _.each(this.elements,
+                    function(element) {
+                        element.destroy();
+                    });
             }
         });
 

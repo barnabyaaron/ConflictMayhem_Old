@@ -29,7 +29,8 @@
         var bind = function (fn, me) { return function () { return fn.apply(me, arguments); }; };
 
         var Classic = (function() {
-            function Classic() {
+            function Classic(options) {
+                this.options = options;
                 this.playerRespawning = bind(this.playerRespawning, this);
                 this.playerAlienCollision = bind(this.playerAlienCollision, this);
                 this.playerHit = bind(this.playerHit, this);
@@ -43,7 +44,7 @@
 
             Classic.prototype.initialize = function() {
                 this.inputSink = Crafty.e("Keyboard");
-                this.player = Crafty.e("ClassicPlayer");
+                this.player = this.createPlayer();
                 this.banner = Crafty.e("Banner");
                 this.score = Crafty.e("Score");
                 this.lives = Crafty.e("Lives");
@@ -58,13 +59,6 @@
                         return _this.lives.lifeUp();
                     };
                 })(this));
-
-                this.player.bind("AlienHit", this.alienHit);
-                this.player.bind("SpaceshipHit", this.spaceshipHit);
-                this.player.bind("ShieldHit", this.shieldHit);
-                this.player.bind("AlienShotHit", this.alienShotHit);
-                this.player.bind("Respawning", this.playerRespawning);
-                this.player.bind("HitByAlien", this.playerAlienCollision);
                 return this.resetBoard();
             };
 
@@ -72,13 +66,11 @@
                 this.banner.hide();
                 this.lives.reset();
                 this.player_won = false;
-                this.player.setPosition(Crafty.viewport.width / 2 - PlayerConstants.WIDTH / 2, Crafty.viewport.height - PlayerConstants.HEIGHT);
-                this.player.show();
-                this.player.enableControl();
                 this.score.reset();
                 this.resetAliens();
                 this.resetAlienShots();
                 this.resetSpaceship();
+                this.resetPlayer();
                 return this.resetShields();
             };
 
@@ -357,9 +349,33 @@
                 }
             };
 
+            Classic.prototype.createPlayer = function() {
+                var player = Crafty.e("ClassicPlayer");
+
+                player.bind("AlienHit", this.alienHit);
+                player.bind("SpaceshipHit", this.spaceshipHit);
+                player.bind("ShieldHit", this.shieldHit);
+                player.bind("AlienShotHit", this.alienShotHit);
+                player.bind("Respawning", this.playerRespawning);
+                player.bind("HitByAlien", this.playerAlienCollision);
+
+                player.setPosition(Crafty.viewport.width / 2 - PlayerConstants.WIDTH / 2,
+                    Crafty.viewport.height - PlayerConstants.HEIGHT);
+                player.show();
+                player.enableControl();
+                return player;
+            };
+
+            Classic.prototype.resetPlayer = function() {
+                this.player.destroy();
+                this.player = this.createPlayer();
+            };
+
             Classic.prototype.playerRespawning = function(player) {
                 if (this.lives.lives === 0) {
                     return this.gameOver();
+                } else {
+                    this.resetPlayer();
                 }
             };
 
@@ -405,7 +421,7 @@
                     storage.set("classic_mode_unlocked", true);
 
                     // @TODO Display Level Complete Panel
-                    Scenes.findByName("menu").load(this); // Temp return to menu
+                    this.options.changeScene('menu'); // Temp return to menu
                 }
             };
 

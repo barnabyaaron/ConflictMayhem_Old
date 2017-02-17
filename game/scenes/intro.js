@@ -16,7 +16,7 @@
             Crafty.background('#000 url(assets/images/black.png) repeat left top');
 
             var ctrl = require('game/classes/classic');
-            this.Ctrl = new ctrl();
+            this.Ctrl = new ctrl(options);
 
             Crafty.bind("EnterFrame", this.Ctrl.update);
         },

@@ -9,11 +9,7 @@
                 ],
                 audio: {
                     menu_music: "through_space.mp3",
-                    classic_music: [
-                        "classic/spaceinvaders1.wav",
-                        "classic/spaceinvaders1.mp3",
-                        "classic/spaceinvaders1.ogg"
-                    ]
+                    classic_music: "classic/spaceinvaders1.mp3"
                 },
                 sprites: {
                     "ui/panel_bg.png": {
@@ -223,6 +219,36 @@
                         tileh: 64,
                         map: {
                             classic_bodySprite: [0, 0]
+                        }
+                    },
+                    "ui/score_bar.png": {
+                        tile: 160,
+                        tileh: 55,
+                        map: {
+                            score_bar: [0, 0]
+                        }
+                    },
+                    "ui/level_complete_panel.png": {
+                        tile: 384,
+                        tileh: 379,
+                        map: {
+                            level_complete_panel: [0, 0]
+                        }
+                    },
+                    "ui/level_complete_score_bg.png": {
+                        tile: 1886,
+                        tileh: 425,
+                        map: {
+                            panel_score: [0, 0]
+                        }
+                    },
+                    "ui/level_complete_buttons.png": {
+                        tile: 100,
+                        tileh: 102,
+                        map: {
+                            continue_btn: [0, 0],
+                            retry_btn: [0, 1],
+                            back_btn: [0, 2]
                         }
                     }
                 }
