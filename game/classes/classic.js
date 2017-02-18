@@ -421,7 +421,8 @@
                     storage.set("classic_mode_unlocked", true);
 
                     // @TODO Display Level Complete Panel
-                    this.options.changeScene('menu'); // Temp return to menu
+                    var levelCompletePanel = Crafty.e("LevelCompletePanel");
+                    //this.options.changeScene('menu'); // Temp return to menu
                 }
             };
 

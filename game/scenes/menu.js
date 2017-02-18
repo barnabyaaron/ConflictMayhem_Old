@@ -25,8 +25,8 @@
                     options.config.viewport.width / 2 - 170,
                     options.config.viewport.height / 5 * 2.7,
                     function () {
-                        Crafty.audio.stop('menu_music');
                         // @TODO Continue
+                        alert("Level 2 not yet implemented!");
                     }
                 ).attr({ visible: false });
 
@@ -53,9 +53,24 @@
                     classicBtnText[Crafty.math.randomInt(0, (classicBtnText.length - 1))]
                 ).textFont({ size: '24px', family: "Silkscreen Expanded" }).attr({ visible: false });
 
-                //if (storage.get('classic_mode_unlocked') === true) {
+                if (storage.get('classic_mode_unlocked') === true) {
                     classicBtn.visible = true;
-                //}
+                }
+
+                var seceretBtn = Crafty.e("MenuButton").create(
+                    "gold",
+                    options.config.viewport.width - 350,
+                    10,
+                    function() {
+                        Crafty.audio.stop('menu_music');
+                        options.changeScene('dev_level');
+                    },
+                    "Secret Dev Level"
+                ).textFont({ size: '20px' });
+
+                if (storage.get('DEBUG_MODE') === true) {
+                    seceretBtn.visible = true;
+                }
             },
             uninit: function () { }
         };

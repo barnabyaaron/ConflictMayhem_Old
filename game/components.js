@@ -12,7 +12,8 @@
     'game/components/ClassicPlayerBody',
     'game/components/ClassicPlayerCannon',
     'game/components/ClassicPlayerShot',
-    'game/components/ClassicPlayer'
+    'game/components/ClassicPlayer',
+    'game/components/Frank'
 ], function () {
     return true;
 });

@@ -322,4 +322,80 @@
             }
         });
 
-});
+        Crafty.c("LevelCompletePanel",
+        {
+            init: function() {
+                this.requires("2D, DOM, level_complete_panel");
+                this.attr({
+                    x: Crafty.viewport.width / 2 - 192,
+                    y: Crafty.viewport.height / 2 - 189.5,
+                    w: 384,
+                    h: 379
+                });
+
+                this.elements = [];
+
+                // Get Score
+                var scoreEl = Crafty("Score").get(0);
+                var score = scoreEl.score;
+
+                // Add Panel Elements
+
+                // Score Panel
+                this.scoreText = Crafty.e("2D, DOM, Text").attr(
+                {
+                    x: this.x + 30,
+                    y: this.y + 100
+                }).unselectable().textColor('#FFFF00').textAlign('left').textFont({
+                    size: '24px',
+                    family: 'KenVector Future'
+                }).text("Score:");
+                this.elements.push(this.scoreText);
+
+                this.scorePanel = Crafty.e("2D, DOM, panel_score, Text").attr({
+                        x: this.x + 30,
+                        y: this.y + 140,
+                        w: 325,
+                        h: 74
+                }).css({
+                    'padding-left': '95px'
+                }).unselectable().textColor('#FFFF00').textAlign('left').textFont({
+                    size: '30px',
+                    lineHeight: '74px',
+                    family: 'KenVector Future'
+                }).text(score);
+
+                this.elements.push(this.scorePanel);
+
+                this.backBtn = Crafty.e("2D, DOM, back_btn, Mouse").attr({
+                    x: this.x + 30,
+                    y: this.y + this.h - 100,
+                    w: 70,
+                    h: 71
+                }).bind("Click", function() {
+                    // Go back to Menu
+                    Main.changeScene('menu');
+                });
+                this.elements.push(this.backBtn);
+
+                this.continueBtn = Crafty.e("2D, DOM, continue_btn, Mouse").attr({
+                    x: this.x + this.w - 100,
+                    y: this.y + this.h - 100,
+                    w: 70,
+                    h: 71
+                }).bind("Click",
+                    function() {
+                        // Go to NEXT Level  @TODO go to level 2
+                        alert("Level 2 not yet implemented!");
+                    });
+                this.elements.push(this.continueBtn);
+            },
+            remove: function() {
+                _.each(this.elements,
+                    function(element) {
+                        element.destroy();
+                    });
+            }
+        });
+
+    });

@@ -10,6 +10,7 @@
     var Scene = {
         name: "intro",
         init: function (options) {
+            var self = this;
             storage.set("classic_mode", false);
             storage.set("level", 1);
 
@@ -19,6 +20,18 @@
             this.Ctrl = new ctrl(options);
 
             Crafty.bind("EnterFrame", this.Ctrl.update);
+
+            // Create Debug Commands if Debug Enabled
+            if (storage.get('DEBUG_MODE') === true) {
+                Crafty.bind("KeyDown",
+                    function(e) {
+                        if (e.key === Crafty.keys.F2) {
+                            // Win Level
+                            Crafty.unbind("EnterFrame", self.Ctrl.update);
+                            self.Ctrl.victory();
+                        }
+                    });
+            }
         },
         uninit: function () { }
     };

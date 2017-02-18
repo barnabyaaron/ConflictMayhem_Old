@@ -247,8 +247,8 @@
                         tileh: 102,
                         map: {
                             continue_btn: [0, 0],
-                            retry_btn: [0, 1],
-                            back_btn: [0, 2]
+                            retry_btn: [1, 0],
+                            back_btn: [2, 0]
                         }
                     }
                 }
@@ -258,6 +258,32 @@
             scenes: ["classic"],
             data: {
                 
+            }
+        },
+        {
+            scenes: ["dev_level"],
+            data: {
+                audio: {
+                    frank_die: "boss/frank/FrankDie.mp3",
+                    frank_hit1: "boss/frank/FrankHit1.mp3",
+                    frank_hit2: "boss/frank/FrankHit2.mp3",
+                    frank_laugh: "boss/frank/FrankLaugh.mp3",
+                    frank_saying1: "boss/frank/OhMyGod.mp3",
+                    frank_saying2: "boss/frank/OhMyGoodLord.mp3"
+                },
+                sprites: {
+                    "sprites/boss/frank/frank_sheet_small.png": {
+                        tile: 200,
+                        tileh: 282,
+                        map: {
+                            frank: [0, 0],
+                            frank_shoot: [1, 0],
+                            frank_happy: [2, 0],
+                            frank_hit: [3, 0],
+                            frank_dead: [4, 0]
+                        }
+                    }
+                }
             }
         }
     ];

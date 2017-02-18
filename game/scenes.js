@@ -3,6 +3,7 @@
         require('game/scenes/loading'),
         require('game/scenes/menu'),
         require('game/scenes/intro'),
-        require('game/scenes/classic')
+        require('game/scenes/classic'),
+        require('game/scenes/dev_level')
     ];
 });
