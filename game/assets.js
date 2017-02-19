@@ -272,7 +272,7 @@
                     frank_saying2: "boss/frank/OhMyGoodLord.mp3"
                 },
                 sprites: {
-                    "sprites/boss/frank/frank_sheet_small.png": {
+                    "sprites/entities/boss/frank_boss.png": {
                         tile: 200,
                         tileh: 282,
                         map: {
@@ -281,6 +281,73 @@
                             frank_happy: [2, 0],
                             frank_hit: [3, 0],
                             frank_dead: [4, 0]
+                        }
+                    }
+                }
+            }
+        },
+        {
+            scenes: ["level", "dev_level"],
+            data: {
+                images: [
+                    "enemies_sheet.png",
+                    "lasers_sheet.png",
+                    "objects_sheet.png",
+                    "player_sheet.png",
+                    "power_up_sheet.png",
+                    "player_interface.png"
+                ],
+                sprites: {
+                    "sprites/entities/invaders_sheet.png": {
+                        tile: 25,
+                        tileh: 22,
+                        map: {
+                            alien1: [0, 0],
+                            alien2: [0, 1],
+                            alien3: [0, 2]
+                        }
+                    },
+                    "sprites/entities/power_up_sheet.png": {
+                        tile: 33,
+                        tileh: 33,
+                        map: {
+                            shield_red: [0, 0],
+                            star_red: [1, 0],
+                            bolt_red: [2, 0],
+                            pill_red: [3, 0],
+                            shield_yellow: [0, 1],
+                            star_yellow: [1, 1],
+                            bolt_yellow: [2, 1],
+                            pill_yellow: [3, 1],
+                            shield_blue: [0, 2],
+                            star_blue: [1, 2],
+                            bolt_blue: [2, 2],
+                            pill_blue: [3, 2],
+                            shield_green: [0, 3],
+                            star_green: [1, 3],
+                            bolt_green: [2, 3],
+                            pill_green: [3, 3]
+                        }
+                    },
+                    "sprites/entities/player/player_red.png": {
+                        tile: 99,
+                        tileh: 75,
+                        map: {
+                            player_red: [0, 0]
+                        }
+                    },
+                    "sprites/entities/player/player_red_left.png": {
+                        tile: 90,
+                        tileh: 75,
+                        map: {
+                            player_red_left: [0, 0]
+                        }
+                    },
+                    "sprites/entities/player/player_red_right.png": {
+                        tile: 90,
+                        tileh: 75,
+                        map: {
+                            player_red_left: [0, 0]
                         }
                     }
                 }

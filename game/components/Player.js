@@ -1,7 +1,10 @@
 ﻿define([
         'underscore',
-        'crafty'
+        'crafty',
+        'game/constants/Player'
     ],
-    function(_, Crafty) {
+    function(_, Crafty, PlayerConstants) {
+
+
 
     });

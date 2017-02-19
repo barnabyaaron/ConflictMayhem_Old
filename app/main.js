@@ -22,7 +22,10 @@ requirejs.config({
             exports: "Backbone"
         },
         dll: { exports: "DLL" }
-    }
+    },
+    packages: [
+        { name: 'when', location: '../libs/when', main: 'when' }
+    ]
 });
 
 requirejs(['app', 'game/components'], function (App) { App.initialize(); });
