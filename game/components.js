@@ -14,6 +14,6 @@
     'game/components/ClassicPlayerShot',
     'game/components/ClassicPlayer',
     'game/components/Frank'
-], function () {
+], function (require) {
     return true;
 });

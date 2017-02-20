@@ -2,9 +2,9 @@
         'underscore',
         'jquery',
         'crafty',
-        'game/main'
+        'app'
     ],
-    function(_, $, Crafty, Main) {
+    function(_, $, Crafty, Game) {
 
         Crafty.c("MenuButton",
         {
@@ -296,7 +296,7 @@
                     function () {
                         // Start classic mode
                         Crafty.audio.stop('classic_music');
-                        Main.changeScene('classic');
+                        Game.changeScene('classic');
                     },
                     'Play');
                 this.elements.push(this.playBtn);
@@ -374,7 +374,7 @@
                     h: 71
                 }).bind("Click", function() {
                     // Go back to Menu
-                    Main.changeScene('menu');
+                    Game.changeScene('menu');
                 });
                 this.elements.push(this.backBtn);
 

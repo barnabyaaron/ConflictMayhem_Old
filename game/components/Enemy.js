@@ -1,7 +1,7 @@
 ﻿define([
         'underscore',
         'crafty',
-        'game/main'
+        'app'
     ],
     function(_, Crafty, Game) {
         Crafty.c('Enemy',

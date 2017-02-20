@@ -2,7 +2,7 @@
         'underscore',
         'crafty',
         'storage'
-],
+    ],
     function (_, Crafty, storage) {
         return {
             name: "menu",

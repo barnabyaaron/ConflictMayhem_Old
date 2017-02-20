@@ -2,8 +2,8 @@
         'underscore',
         'crafty',
         'storage',
-        'require'
-], function (_, Crafty, storage, require) {
+        'app'
+], function (_, Crafty, storage, Game) {
 
     var Scene = {
         name: "dev_level",
@@ -31,6 +31,12 @@
                     });
             }
 
+            Crafty.bind("KeyDown",
+                function(e) {
+                    if (e.key === Crafty.keys.T) {
+                        Game.TestExt.print("Testing Test Ext.");
+                    }
+                });
 
             // Create Frank
             var frank = Crafty.e("Frank");

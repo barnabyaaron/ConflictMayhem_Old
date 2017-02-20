@@ -11,6 +11,7 @@ requirejs.config({
         crafty: '../libs/crafty/crafty',
         store: '../libs/store/store-min',
         dll: '../libs/DLL/doublylinkedlist',
+        jsbezier: '../libs/jsBezier',
         game: '../game',
         libs: '../libs'
     },
@@ -28,4 +29,4 @@ requirejs.config({
     ]
 });
 
-requirejs(['app', 'game/components'], function (App) { App.initialize(); });
+requirejs(['app', 'game/components'], function (Game) { Game.start(false); });
