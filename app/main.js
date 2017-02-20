@@ -29,4 +29,4 @@ requirejs.config({
     ]
 });
 
-requirejs(['app', 'game/components'], function (Game) { Game.start(false); });
+requirejs(['app', 'game/components'], function (Game) { Game.start(); });

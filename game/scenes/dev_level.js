@@ -31,10 +31,11 @@
                     });
             }
 
+            Game.TestExt.print("Testing Test Ext General.");
             Crafty.bind("KeyDown",
                 function(e) {
                     if (e.key === Crafty.keys.T) {
-                        Game.TestExt.print("Testing Test Ext.");
+                        Game.TestExt.print("Testing Test Ext KeyDown.");
                     }
                 });
 
